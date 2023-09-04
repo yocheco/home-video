@@ -1,0 +1,12 @@
+media/*
+.bash*
+.profile*
+.ssh*
+.vim*
+downloads/*
+.gitconfig
+*.log
+.DS_Store
+.env
+transmission/dht.dat
+transmission/stats.json
