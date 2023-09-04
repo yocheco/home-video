@@ -1,0 +1,16 @@
+version: "3.7"
+
+services:
+  transmission:
+    image : jaymoulin/transmission:3.00-1.6.1
+    command: transmission-daemon -f -g /config
+    volumes:
+      - ./transmission:/config
+      - ${STORAGE}/torrents:/downloads
+    ports:
+      - 9091:9091
+      - 51413:51413
+      - 51413:51413/udp
+    expose:
+      - 9091
+    restart: unless-stopped
