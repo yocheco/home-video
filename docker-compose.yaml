@@ -16,14 +16,13 @@ services:
     restart: unless-stopped
 
   jackett:
-    image: lscr.io/linuxserver/jackett:arm64v8-latest
+    image: angelnu/jackett 
     container_name: jackett
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=Etc/UTC
-      - AUTO_UPDATE=true #optional
-      - RUN_OPTS= #optional
+      - AUTO_UPDATE=true
     volumes:
       - ./jackett/data:/config
       - ./jackett/blackhole:/downloads
