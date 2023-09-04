@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   transmission:
-    image : jaymoulin/transmission:3.00-1.6.1
+    image : jaymoulin/transmission:4.0.4
     command: transmission-daemon -f -g /config
     volumes:
       - ./transmission:/config
