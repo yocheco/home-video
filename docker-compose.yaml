@@ -16,7 +16,7 @@ services:
     restart: unless-stopped
 
   jackett:
-    image: linuxserver/jackett
+    image: ghcr.io/linuxserver/jackett
     container_name: jackett
     environment:
       - PUID=1000
