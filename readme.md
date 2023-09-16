@@ -18,4 +18,12 @@ UUID="EC7A62797A624086" /mnt/storage ntfs-3g defaults,auto 0 0
 UUID="EC7A62797A624086" /proc proc defaults 0 0
 
 UUID="EC7A62797A624086" /mnt/storage ntfs-3g defaults,auto 0 0
-UUID=EC7A62797A624086 /mnt/storage ntfs-3g defaults,auto,uid=1000,gid=tu_grupo 0 0
+UUID="EC7A62797A624086" /mnt/storage ntfs-3g defaults,auto,uid=1000,gid=tu_grupo 0 0
+UUID=EC7A62797A624086 /mnt/dietpi_userdata/downloads ntfs-3g defaults,auto,uid=1000,gid=tu_grupo 0 0
+
+UUID=EC7A62797A624086 /mnt/dietpi_userdata/downloads ntfs-3g defaults,auto,uid=1000,gid=tu_grupo 0 0
+dietpi_userdata
+
+UUID="EC7A62797A624086" /mnt/dietpi_userdata/downloads ntfs-3g defaults,auto 0 0
+
+EC7A62797A624086

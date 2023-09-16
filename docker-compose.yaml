@@ -1,16 +1,66 @@
 version: "3.7"
-
 services:
   transmission:
-    image : jaymoulin/transmission:4.0.4
-    command: transmission-daemon -f -g /config
+    image: jaymoulin/transmission:4.0.4
+    container_name: transmission
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Mexico_City
+      - USER=admin #optional
+      - PASS=123456 #optional
+
     volumes:
-      - ./transmission:/config
-      - ${STORAGE}/torrents:/downloads
+      - ${STORAGE}/transmission/config:/config
+      - ${STORAGE}/downloads:/downloads
+      - ${STORAGE}/downloads/complete:/output
+      - ${STORAGE}/transmission/watch:/watch
     ports:
       - 9091:9091
       - 51413:51413
       - 51413:51413/udp
-    expose:
-      - 9091
+    restart: unless-stopped
+
+  radarr:
+    image: lscr.io/linuxserver/radarr:latest
+    container_name: radarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Mexico_City
+    volumes:
+      - ${STORAGE}/radarr/config:/config
+      - ${STORAGE}/downloads:/downloads #optional
+    ports:
+      - 7878:7878
+    restart: unless-stopped
+
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:develop
+    container_name: prowlarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Mexico_City
+    volumes:
+      - ${STORAGE}/prowlarr/config:/config
+    ports:
+      - 9696:9696
+    restart: unless-stopped
+
+  jellyfin:
+    image: lscr.io/linuxserver/jellyfin:latest
+    container_name: jellyfin
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Mexico_City
+    volumes:
+      - ${STORAGE}/jellyfin/config:/config
+      - ${STORAGE}/downloads/complete:/data/tvshows
+      - ${STORAGE}/downloads/complete:/data/movies
+    ports:
+      - 8096:8096
+      - 8920:8920 #optional
+      - 7359:7359/udp #optional
     restart: unless-stopped

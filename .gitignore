@@ -10,3 +10,4 @@ downloads/*
 .env
 transmission/dht.dat
 transmission/stats.json
+storage/
